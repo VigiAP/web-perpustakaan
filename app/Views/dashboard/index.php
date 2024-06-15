@@ -74,8 +74,6 @@
     </div>
     <?php endif; ?>
 
-
-
     <?php if (session()->get('role') === 'pustakawan'): ?>
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -90,7 +88,7 @@
                     <div class="icon">
                         <i class="ion ion-book"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/kelola_buku'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -104,7 +102,7 @@
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/daftar_anggota'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -118,7 +116,7 @@
                     <div class="icon">
                         <i class="ion ion-loop"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/sirkulasi'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -132,7 +130,7 @@
                     <div class="icon">
                         <i class="ion ion-document"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/laporan'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
