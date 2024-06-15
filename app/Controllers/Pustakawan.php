@@ -339,7 +339,7 @@ class Pustakawan extends BaseController
 
     public function laporan()
     {
-        $result = $this->bukuModel->bukuPanelKonten();
+        $result = $this->peminjamanModel->laporanPeminjaman();
 
         $data = [
             'title' => 'Laporan',
