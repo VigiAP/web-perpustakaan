@@ -53,7 +53,7 @@ class Accounts extends BaseController
                 } elseif($cek['role'] === 'pustakawan'){
                     return redirect()->to(base_url('pustakawan'));
                 }else{
-                    return redirect()->to(base_url('home'));
+                    return redirect()->to(base_url('pengguna/home'));
                 }
                 
             }else{

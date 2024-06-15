@@ -258,25 +258,25 @@
 
                         <?php if (session()->get('role') == 'pengguna'): ?>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('/pengguna'); ?>" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                        <li class="nav-item has-treeview">
+                            <a href="<?= base_url('/pengguna/bookmark'); ?>" class="nav-link">
+                                <i class="nav-icon fas fa-book-reader"></i>
                                 <p>
                                     Koleksi Buku
+                                   
                                 </p>
                             </a>
-
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-bookmark"></i>
+                                <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Peminjaman
                                 </p>
@@ -299,7 +299,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('/home'); ?>" class="nav-link">
+                            <a href="<?= base_url('/pengguna/home'); ?>" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Kembali Ke Home
