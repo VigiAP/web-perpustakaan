@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="no_hp">Nomor HP</label>
-                                <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP">
+                                <input type="number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP">
                             </div>
                         </div>
                         <!-- /.card-body -->
