@@ -6,6 +6,8 @@ use App\Models\BukuModel;
 use App\Models\KategoriModel;
 use App\Models\DetailKategori;
 use App\Models\UserModel;
+use App\Models\PeminjamanModel;
+use App\Models\DetailPeminjaman;
 
 
 class Pustakawan extends BaseController
@@ -14,6 +16,8 @@ class Pustakawan extends BaseController
     protected $kategoriModel;
     protected $detailKategori;
     protected $userModel;
+    protected $peminjamanModel;
+    protected $detailPeminjaman;
 
     public function __construct()
     {
@@ -21,6 +25,8 @@ class Pustakawan extends BaseController
         $this->kategoriModel = new KategoriModel();
         $this->detailKategori = new DetailKategori();
         $this->userModel = new UserModel();
+        $this->peminjamanModel = new PeminjamanModel();
+        $this->detailPeminjamanModel = new DetailPeminjaman();
     }
 
     public function index()
@@ -317,8 +323,11 @@ class Pustakawan extends BaseController
 
     public function sirkulasi()
     {
+        $result = $this->peminjamanModel->sirkulasiPeminjaman();
+
         $data = [
             'title' => 'Sirkulasi Buku',
+            'sirkulasi' => $result
         ];
 
         return view('dashboard/pustakawan/sirkulasi', $data);
@@ -330,9 +339,13 @@ class Pustakawan extends BaseController
 
     public function laporan()
     {
+        $result = $this->bukuModel->bukuPanelKonten();
+
         $data = [
             'title' => 'Laporan',
+            'buku' => $result
         ];
+
 
         return view('dashboard/pustakawan/laporan', $data);
     }
