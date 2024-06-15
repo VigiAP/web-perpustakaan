@@ -38,4 +38,14 @@ class BukuModel extends Model
         $query = $this->db->table($this->table)->update($data, array('id_buku' => $id_buku));
         return $query;
     }
+
+    public function getListBuku()
+    {
+        return $this->db->table('buku b')
+            ->select('b.judul AS judul, b.id_buku')
+            ->orderBy('judul', 'ASC')
+            ->get()
+            ->getResultArray();
+    }
+
 }

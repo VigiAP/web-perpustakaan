@@ -58,5 +58,22 @@ class Pengguna extends BaseController
         ]);
     }
 
+    public function list_buku()
+    {
+        $result = $this->bukuModel->getListBuku();
+        
+        $groupedBuku = [];
 
+        foreach ($result as $judul){
+            $firstLetter = strtoupper(substr($judul['judul'], 0, 1));
+
+            $groupedBuku[$firstLetter][] = $judul;
+        }
+
+        $data =[
+            'title'=>'List Buku',
+            'groupedBuku' => $groupedBuku,
+        ];
+        return view('home/list_buku', $data);
+    }
 }
