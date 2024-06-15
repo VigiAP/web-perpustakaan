@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="<?= base_url('plugins/daterangepicker/daterangepicker.css'); ?>">
     <!-- summernote -->
     <link rel="stylesheet" href="<?= base_url('plugins/summernote/summernote-bs4.min.css'); ?>">
-   <!-- Custom CSS -->
+    <!-- Custom CSS -->
     <style>
         .small-box {
             width: 250px;
@@ -258,7 +258,7 @@
 
                         <?php if (session()->get('role') == 'pengguna'): ?>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('dashboard/index'); ?>" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -315,8 +315,6 @@
                             </a>
                         </li>
                         <?php endif; ?>
-
-
 
                     </ul>
                 </nav>
