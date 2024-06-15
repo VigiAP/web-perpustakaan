@@ -11,7 +11,7 @@
                         <img src="<?= base_url('cover/' . $book['cover']); ?>" class="card-img-top" alt="<?= $book['judul'] ?>" style="height: 12rem; object-fit: cover;">
                     </div>
 
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                   
                     <div class="card-heading">
                         <?= $book['judul'] ?>
                     </div>
