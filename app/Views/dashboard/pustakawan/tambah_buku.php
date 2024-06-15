@@ -30,10 +30,8 @@
                 <script src="https://code.jquery.com/jquery-3.7.1.js"
                     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
                 <select name="kategori[]" class="form-control select2" multiple="multiple" placeholder="Kategori ...">
-                    <?php
-                                foreach ($kategori as $option) : ?>
+                    <?php foreach ($kategori as $option) : ?>
                     <option value="<?= $option['id_kategori']; ?>"><?= $option['nama_kategori']; ?></option>
-
                     <?php endforeach; ?>
                 </select>
                 <script>
@@ -63,6 +61,5 @@
         </form>
     </div>
 </div>
-
 
 <?php $this->endSection(); ?>
