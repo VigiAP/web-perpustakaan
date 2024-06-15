@@ -56,9 +56,10 @@ class Admin extends BaseController
         $validation->setRules([
             'username' => [
                 'label' => 'Username',
-                'rules' => 'required',
+                'rules' => 'required|is_unique',
                 'errors' => [
-                    'required' => 'Username harus diisi.'
+                    'required' => 'Username harus diisi.',
+                    'is_unique' => 'Username sudah digunakan.'
                 ]
             ],
             'password' => [
@@ -70,7 +71,7 @@ class Admin extends BaseController
             ],
             'no_hp' => [
                 'label' => 'Nomor HP',
-                'rules' => 'required',
+                'rules' => 'required|is_unique',
                 'errors' => [
                     'required' => 'Nomor HP harus diisi.'
                 ]
@@ -139,7 +140,7 @@ class Admin extends BaseController
             $data['password'] = $password;
         }
     
-        if ($userModel->updatePetugas($id_users, $data)) {
+        if ($userModel->updateUser($id_users, $data)) {
             return redirect()->to(base_url('admin/petugas/' . $id_users))->with('pesan2', 'Data petugas berhasil diupdate.');
         } else {
             return redirect()->to(base_url('admin/edit_petugas/' . $id_users))->with('pesan', 'Gagal mengupdate data petugas.');
@@ -257,7 +258,7 @@ class Admin extends BaseController
             $data['password'] = $password;
         }
     
-        if ($userModel->updatePetugas($id_users, $data)) {
+        if ($userModel->updateUser($id_users, $data)) {
             return redirect()->to(base_url('admin/admin/' . $id_users))->with('pesan2', 'Data petugas berhasil diupdate.');
         } else {
             return redirect()->to(base_url('admin/edit_admin/' . $id_users))->with('pesan', 'Gagal mengupdate data petugas.');

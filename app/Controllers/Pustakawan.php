@@ -31,6 +31,8 @@ class Pustakawan extends BaseController
         
         return view('dashboard/index', $data);
     }
+    
+    //buku start
 
     public function kelola_buku()
     {
@@ -185,6 +187,9 @@ class Pustakawan extends BaseController
         return redirect()->to('pustakawan/kelola_buku')->with('success2', "Data berhasil diupdate");
     }
 
+    // buku end
+
+    // anggota start
 
     public function daftar_anggota()
     {
@@ -212,9 +217,10 @@ class Pustakawan extends BaseController
         $validation->setRules([
             'username' => [
                 'label' => 'Username',
-                'rules' => 'required',
+                'rules' => 'required|is_unique[users.username]',
                 'errors' => [
-                    'required' => 'Username harus diisi.'
+                    'required' => 'Username harus diisi.',
+                    'is_unique' => 'Username sudah digunakan.'
                 ]
             ],
             'password' => [
@@ -234,7 +240,7 @@ class Pustakawan extends BaseController
         ]);
 
         if ($validation->withRequest($this->request)->run() === FALSE) {
-            session()->setFlashdata('pesan', 'Silahkan Isi Semua Data');
+            session()->setFlashdata('pesan', 'Silahkan Isi Semua Data dengan benar!');
             return redirect()->back()->withInput();
         } else {
             $data = [
@@ -264,14 +270,72 @@ class Pustakawan extends BaseController
         echo view('dashboard/pustakawan/edit_anggota', $data);
     }
 
+    public function update_anggota()
+    {
+        $userModel = new \App\Models\UserModel();
+        $id_users = $this->request->getPost('id_users');
+        $username = $this->request->getPost('username');
+        $no_hp = $this->request->getPost('no_hp');
+
+        // Validasi untuk memastikan bahwa username dan no_hp tidak kosong
+        if (empty($username) || empty($no_hp)) {
+            session()->setFlashdata('pesan', 'Username atau Nomor HP tidak boleh kosong.');
+            return redirect()->back()->withInput();
+        }
+
+        $data = [
+            'username' => $username,
+            'no_hp' => $no_hp
+        ];
+    
+        // Check if password is provided
+        $password = $this->request->getPost('password');
+        if (!empty($password)) {
+            $data['password'] = $password;
+        }
+    
+        if ($userModel->updateUser($id_users, $data)) {
+            return redirect()->to(base_url('pustakawan/daftar_anggota/' . $id_users))->with('pesan2', 'Data anggota berhasil diupdate.');
+        } else {
+            return redirect()->to(base_url('pustakawan/edit_anggota/' . $id_users))->with('pesan', 'Gagal mengupdate data anggota.');
+        }
+    }
+
     public function delete_anggota($id_users)
     {
         if ($this->userModel->deleteUser($id_users)) {
-            session()->setFlashdata('pesan2', 'Petugas berhasil dihapus');
+            session()->setFlashdata('pesan2', 'Anggota berhasil dihapus');
         } else {
-            session()->setFlashdata('pesan', 'Gagal menghapus petugas');
+            session()->setFlashdata('pesan', 'Gagal menghapus anggota');
         }
         return redirect()->to('/pustakawan/daftar_anggota');
     }
 
+    // anggota end
+
+    // sirkulasi start
+
+    public function sirkulasi()
+    {
+        $data = [
+            'title' => 'Sirkulasi Buku',
+        ];
+
+        return view('dashboard/pustakawan/sirkulasi', $data);
+    }
+
+    // sirkulasi end
+
+    // laporan start
+
+    public function laporan()
+    {
+        $data = [
+            'title' => 'Laporan',
+        ];
+
+        return view('dashboard/pustakawan/laporan', $data);
+    }
+
+    // laporan end
 }

@@ -33,7 +33,7 @@ class UserModel extends Model
         return $this->db->table($this->table)->delete(['id_users' => $id_users]);
     }
 
-    public function updatePetugas($id_users, $data)
+    public function updateUser($id_users, $data)
     {
         return $this->update($id_users, $data);
     }

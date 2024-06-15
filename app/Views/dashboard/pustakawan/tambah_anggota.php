@@ -13,10 +13,10 @@
                     <!-- form start -->
                     <form action="<?= base_url('pustakawan/simpan_anggota') ?>" method="post">
                     <?php if (session()->getFlashdata('pesan')): ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?= session()->getFlashdata('pesan'); ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= session()->getFlashdata('pesan'); ?>
+                        </div>
+                    <?php endif; ?>
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="username">Username</label>
