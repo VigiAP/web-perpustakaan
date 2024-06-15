@@ -107,4 +107,13 @@ class Pengguna extends BaseController
 
         return view('home/list_kategori', $data);
     }
+
+    public function contact()
+    {
+        $data = [
+            'title'=>'Contact',
+        ];
+
+        return view('/home/contact', $data);
+    }
 }
