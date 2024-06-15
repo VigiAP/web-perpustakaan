@@ -76,4 +76,35 @@ class Pengguna extends BaseController
         ];
         return view('home/list_buku', $data);
     }
+
+
+    public function list_kategori()
+    {
+        $data_kategori = $this->kategoriModel->get_kategori();
+
+        $builder = $this->bukuModel->db->table('buku b');
+        $builder->select('k.nama_kategori as kategori, b.judul as judul, b.id_buku');
+        $builder->join('detail_kategori dk', 'b.id_buku = dk.id_buku');
+        $builder->join('kategori k', 'dk.id_kategori = k.id_kategori');
+
+        $result = $builder->get()->getResultArray();
+
+        // Mengelompokkan buku berdasarkan kategori
+        $groupedByKategori = [];
+        foreach ($result as $row) {
+            $kategori = $row['kategori'];
+            if (!isset($groupedByKategori[$kategori])) {
+                $groupedByKategori[$kategori] = [];
+            }
+            $groupedByKategori[$kategori][] = $row;
+        }
+
+        $data = [
+            'title' => 'List Kategori',
+            'groupedByKategori' => $groupedByKategori,
+            'kategori' => $data_kategori
+        ];
+
+        return view('home/list_kategori', $data);
+    }
 }

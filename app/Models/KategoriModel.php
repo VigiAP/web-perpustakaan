@@ -42,4 +42,6 @@ class KategoriModel extends Model
         return $this->orderBy('id_kategori', 'DESC')->findAll();
     }
 
+ 
+
 }
