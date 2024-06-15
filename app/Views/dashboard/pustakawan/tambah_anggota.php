@@ -7,11 +7,11 @@
             <div class="col-12">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Tambah Pengguna</h3>
+                        <h3 class="card-title">Tambah Anggota</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="<?= base_url('pustakawan/simpan_pengguna') ?>" method="post">
+                    <form action="<?= base_url('pustakawan/simpan_anggota') ?>" method="post">
                     <?php if (session()->getFlashdata('pesan')): ?>
                             <div class="alert alert-danger" role="alert">
                                 <?= session()->getFlashdata('pesan'); ?>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="no_hp">Nomor HP</label>
-                                <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP">
+                                <input type="number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP">
                             </div>
                         </div>
                         <!-- /.card-body -->

@@ -47,4 +47,9 @@ class UserModel extends Model
     {
         return $this->where('role', $role)->countAllResults();
     }
+
+    public function getUsersId($id_users)
+    {
+        return $this->find($id_users);
+    }
 }

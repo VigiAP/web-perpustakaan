@@ -222,9 +222,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('/pustakawan/daftar_pengguna'); ?>" class="nav-link">
+                                    <a href="<?= base_url('/pustakawan/daftar_anggota'); ?>" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
-                                        <p>Daftar Pengguna</p>
+                                        <p>Daftar Anggota</p>
                                     </a>
                                 </li>
                             </ul>
