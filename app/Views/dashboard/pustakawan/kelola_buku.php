@@ -53,9 +53,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $no = 1; ?>
                                 <?php foreach ($buku as $book): ?>
                                 <tr>
-                                    <td><?= $book->id_buku; ?></td>
+                                    <td><?= $no++; ?></td>
                                     <td><?= $book->judul; ?></td>
                                     <td><?= $book->penulis; ?></td>
                                     <td><?= $book->penerbit; ?></td>
