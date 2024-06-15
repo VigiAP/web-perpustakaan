@@ -116,4 +116,23 @@ class Pengguna extends BaseController
 
         return view('/home/contact', $data);
     }
+
+    public function search()
+    {
+        $searchKeyword = $this->request->getPost('search_keyword');
+
+        if(!empty($searchKeyword)){
+            $searchResults = $this->bukuModel->searchBuku($searchKeyword);
+
+            $data = [
+                'title' => 'Search Result',
+                'searchResults' => $searchResults,
+                'searchKeyword' => $searchKeyword
+            ];
+            return view('home/hasil_pencarian', $data);
+
+        } else{
+            return redirect()->to('pengguna/home')->with('error', 'gagal mencari atau data tidak ada');
+        }
+    }
 }

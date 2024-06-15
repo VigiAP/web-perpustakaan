@@ -48,4 +48,9 @@ class BukuModel extends Model
             ->getResultArray();
     }
 
+    public function searchBuku($keyword)
+    {
+        return $this->like('judul', $keyword)->findAll();
+    }
+
 }

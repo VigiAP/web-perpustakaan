@@ -136,12 +136,17 @@
                         <a class="nav-link" href="<?= base_url('pengguna'); ?>">Dashboard</a>
                     </li>
                 </ul>
-                <form class="d-flex" action="/home/search" method="get">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" action="<?= base_url('pengguna/search'); ?>" method="post">
+                    <input class="form-control me-2" name="search_keyword" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
+    <?php if(session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger text-center" role="alert" style="margin-top: 80px;">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    <?php endif; ?>
 
     <?= $this->renderSection('konten'); ?>
