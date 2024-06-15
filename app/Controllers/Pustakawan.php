@@ -63,7 +63,6 @@ class Pustakawan extends BaseController
             'penulis' => 'required',
             'penerbit' => 'required',
             'kategori' => 'required',
-            'isbn' => 'required',
             'tahun_terbit' => 'required|numeric',
         ];
 
