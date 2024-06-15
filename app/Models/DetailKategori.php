@@ -32,5 +32,13 @@ class DetailKategori extends Model
         return $query;
     }
 
-    
+    public function getKategoriByBukuId($id_buku)
+    {
+        $builder = $this->db->table('detail_kategori dk');
+        $builder->select('k.nama_kategori');
+        $builder->join('kategori k', 'dk.id_kategori = k.id_kategori');
+        $builder->where('dk.id_buku', $id_buku);
+
+        return $builder->get()->getResultArray();
+    }
 }

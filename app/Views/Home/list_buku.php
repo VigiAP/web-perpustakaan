@@ -14,7 +14,7 @@
                             <hr class="bg-danger border-2 border-top">
                             <ul class="list-unstyled">
                                 <?php foreach ($judul as $jud) { ?>
-                                    <li><a class="text-decoration-none text-white" href="<?= base_url('pengguna/lihat_buku/' . $jud['id_buku']); ?>"><?= $jud['judul']; ?></a></li>
+                                    <li><a class="text-decoration-none text-white" href="<?= base_url('pengguna/bukuid/' . $jud['id_buku']); ?>"><?= $jud['judul']; ?></a></li>
                                 <?php } ?>
                             </ul>
                         </div>

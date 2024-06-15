@@ -11,7 +11,7 @@
                     <div class="col-md-3">
                         <div class="card-sl">
                             <div class="card-image">
-                                <img src="<?= base_url('cover/' . $book['cover']); ?>" class="card-img-top" alt="<?= $book['judul'] ?>" style="height: 12rem; object-fit: cover;">
+                                <a href="<?= base_url('pengguna/bukuid/' . $book['id_buku']); ?>"><img src="<?= base_url('cover/' . $book['cover']); ?>" class="card-img-top" alt="<?= $book['judul'] ?>" style="height: 12rem; object-fit: cover;"></a>
                             </div>
                             <a class="card-action" href="#"><i class="fa fa-bookmark"></i></a>
                             <div class="card-heading">

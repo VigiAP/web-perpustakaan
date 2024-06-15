@@ -15,7 +15,7 @@
                             <?php foreach ($bukuList as $buku): ?>
                             <li class="mb-2">
                                 <a class="text-decoration-none text-white"
-                                    href="<?= base_url('streaming/' . $buku['id_buku']); ?>">
+                                    href="<?= base_url('pengguna/bukuid/' . $buku['id_buku']); ?>">
                                     <?= $buku['judul']; ?>
                                 </a>
                             </li>

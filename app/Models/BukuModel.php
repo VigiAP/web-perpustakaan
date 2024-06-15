@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use CodeIgniter\Model;
+use PharIo\Version\BuildMetaData;
 
 class BukuModel extends Model
 {
@@ -51,6 +52,17 @@ class BukuModel extends Model
     public function searchBuku($keyword)
     {
         return $this->like('judul', $keyword)->findAll();
+    }
+
+    public function getBukuInfo()
+    {
+        return $this->db->table('buku b')
+            ->select('b.*, GROUP_CONCAT(k.nama_kategori) AS kategori')
+            ->join('detail_kategori dk', 'b.id_buku = dk.id_buku', 'left')
+            ->join('kategori k', 'dk.id_kategori = k.id_kategori', 'left')
+            ->groupBy('b.id_buku')
+            ->get()
+            ->getResultArray();
     }
 
 }

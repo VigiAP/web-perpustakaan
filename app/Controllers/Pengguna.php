@@ -7,13 +7,14 @@ use App\Models\BukuModel;
 use App\Models\UserModel;
 use App\Models\DetailKategori;
 use App\Models\KategoriModel;
+use PHPUnit\Framework\EmptyStringException;
 
 class Pengguna extends BaseController
 {
     protected $bookmarkModel;
     protected $bukuModel;
     protected $userModel;
-    protected $detailKategoriModel;
+    protected $detailKategori;
     protected $kategoriModel;
 
     public function __construct()
@@ -21,7 +22,7 @@ class Pengguna extends BaseController
         $this->bookmarkModel = new BookmarkModel();
         $this->bukuModel = new BukuModel();
         $this->userModel = new UserModel();
-        $this->detailKategoriModel = new DetailKategori();
+        $this->detailKategori = new DetailKategori();
         $this->kategoriModel = new KategoriModel();
     }
 
@@ -34,6 +35,19 @@ class Pengguna extends BaseController
         return view('dashboard/index', $data);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    // bagian home
+
     public function home()
     {
         // Ambil data buku yang baru ditambahkan
@@ -41,7 +55,7 @@ class Pengguna extends BaseController
         
         // Ambil data kategori untuk setiap buku
         foreach ($newBooks as &$book) {
-            $detailKategoris = $this->detailKategoriModel->where('id_buku', $book['id_buku'])->findAll();
+            $detailKategoris = $this->detailKategori->where('id_buku', $book['id_buku'])->findAll();
             $kategoriNames = [];
             foreach ($detailKategoris as $detail) {
                 $kategori = $this->kategoriModel->find($detail['id_kategori']);
@@ -135,4 +149,31 @@ class Pengguna extends BaseController
             return redirect()->to('pengguna/home')->with('error', 'gagal mencari atau data tidak ada');
         }
     }
+
+
+
+    public function bukuid($id_buku)
+    {
+        $buku = $this->bukuModel->find($id_buku);
+    
+        if (!$buku) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Buku dengan ID {$id_buku} tidak ditemukan.");
+        }
+    
+        $kategori = $this->detailKategori->getKategoriByBukuId($id_buku);
+    
+        if (!empty($kategori)) {
+            $kategoriValue = array_column($kategori, 'nama_kategori');
+            $buku['kategori'] = implode(',', $kategoriValue);
+        } else {
+            $buku['kategori'] = 'tidak ada kategori';
+        }
+    
+        $data = [
+            'title' => "Detail Buku {$buku['judul']}",
+            'buku' => $buku, // Mengirimkan sebagai objek tunggal
+        ];
+        return view('home/detail_buku', $data);
+    }
+  
 }

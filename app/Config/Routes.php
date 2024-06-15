@@ -16,6 +16,8 @@ $routes->setAutoRoute(true);
 $routes->get('/Acccounts', 'Accounts::index');
 $routes->get('generate-pdf/(:num)', 'PdfController::generatePdf/$1');
 $routes->post('bookmark/add', 'Pengguna::addBookmark');
+$routes->get('pengguna/bukuid/(:num)', 'Pengguna::bukuid/$1');
+$routes->get('pengguna/detail_buku', 'Pengguna::detail_buku');
 
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
