@@ -76,6 +76,18 @@
         .card-body {
             background-color: white;
         }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
 </head>
 
@@ -210,9 +222,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('/pustakawan/daftar_pengguna'); ?>" class="nav-link">
+                                    <a href="<?= base_url('/pustakawan/daftar_anggota'); ?>" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
-                                        <p>Daftar Pengguna</p>
+                                        <p>Daftar Anggota</p>
                                     </a>
                                 </li>
                             </ul>

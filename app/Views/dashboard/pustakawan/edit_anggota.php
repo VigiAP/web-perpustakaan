@@ -7,11 +7,11 @@
             <div class="col-12">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Edit Admin</h3>
+                        <h3 class="card-title">Edit Anggota</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="<?= base_url('admin/update_admin') ?>" method="post">
+                    <form action="<?= base_url('pustakawan/update_anggota') ?>" method="post">
                     <input type="hidden" name="id_users" value="<?= $user['id_users']; ?>">
                     <?php if (session()->getFlashdata('pesan')): ?>
                             <div class="alert alert-danger" role="alert">

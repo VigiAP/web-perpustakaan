@@ -187,28 +187,26 @@ class Pustakawan extends BaseController
     }
 
 
-    public function daftar_pengguna()
+    public function daftar_anggota()
     {
         $users = $this->userModel->where('role', 'pengguna')->findAll();
         $data = [
-            'title' => 'Daftar Pengguna',
+            'title' => 'Daftar Anggota',
             'users' => $users
         ];
-        return view('dashboard/pustakawan/daftar_pengguna', $data);
+        return view('dashboard/pustakawan/daftar_anggota', $data);
     }
 
-    public function tambah_pengguna()
+    public function tambah_anggota()
     {
         $data =[
-            'title'=>'Tambah Pengguna',
+            'title'=>'Tambah Anggota',
         ];
         
-        return view('dashboard/pustakawan/tambah_pengguna', $data);
+        return view('dashboard/pustakawan/tambah_anggota', $data);
     }
 
-
-
-    public function simpan_pengguna()
+    public function simpan_anggota()
     {
         $validation = \Config\Services::validation();
 
@@ -251,20 +249,30 @@ class Pustakawan extends BaseController
             $model->insert($data);
 
             session()->setFlashdata('pesan2', 'Petugas berhasil ditambahkan');
-            return redirect()->to('/pustakawan/daftar_pengguna');
+            return redirect()->to('/pustakawan/daftar_anggota');
         }
     }
 
-    public function delete_pengguna($id_users)
+    public function edit_anggota($id_users) 
+    {
+        $anggota = $this->userModel->getUsersId($id_users);
+        
+        $data = [
+            'title' => 'Edit Anggota',
+            'user' => $this->userModel->find($id_users)
+        ];
+        
+        echo view('dashboard/pustakawan/edit_anggota', $data);
+    }
+
+    public function delete_anggota($id_users)
     {
         if ($this->userModel->deleteUser($id_users)) {
             session()->setFlashdata('pesan2', 'Petugas berhasil dihapus');
         } else {
             session()->setFlashdata('pesan', 'Gagal menghapus petugas');
         }
-        return redirect()->to('/admin/pengguna');
+        return redirect()->to('/pustakawan/daftar_anggota');
     }
-
-
 
 }
