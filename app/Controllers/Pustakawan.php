@@ -79,7 +79,6 @@ class Pustakawan extends BaseController
             'penulis' => $this->request->getVar('penulis'),
             'penerbit' => $this->request->getVar('penerbit'),
             'tahun_terbit' => $this->request->getVar('tahun_terbit'),
-            'isbn' => $this->request->getVar('isbn'),
             'jumlah' => $this->request->getVar('jumlah'),
         ];
 
@@ -164,7 +163,6 @@ class Pustakawan extends BaseController
             'penulis' => $this->request->getVar('penulis'),
             'penerbit' => $this->request->getVar('penerbit'),
             'tahun_terbit' => $this->request->getVar('tahun_terbit'),
-            'isbn' => $this->request->getVar('isbn'),
             'jumlah' => $this->request->getVar('jumlah'),
             'cover' => $namaGambar
         ];
