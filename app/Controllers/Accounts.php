@@ -47,7 +47,8 @@ class Accounts extends BaseController
                 session()->set('log', true);
                 session()->set('username', $cek['username']);
                 session()->set('role', $cek['role']);
-                
+                session()->set('id_users', $cek['id_users']); // Simpan userId di sesi
+
                 if ($cek['role'] === 'admin') {
                     return redirect()->to(base_url('admin'));
                 } elseif($cek['role'] === 'pustakawan'){

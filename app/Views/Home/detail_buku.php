@@ -1,6 +1,17 @@
 <?php $this->extend('layout/l_home'); ?>
 
 <?php $this->section('konten'); ?>
+<?php if(session()->getFlashdata('pesan')): ?>
+        <div class="alert alert-danger text-center" role="alert" style="margin-top: 80px;">
+            <?= session()->getFlashdata('pesan') ?>
+        </div>
+    <?php endif; ?>
+<?php if(session()->getFlashdata('pesan2')): ?>
+        <div class="alert alert-success text-center" role="alert" style="margin-top: 80px;">
+            <?= session()->getFlashdata('pesan2') ?>
+        </div>
+    <?php endif; ?>
+
 
 <div style="display: flex; border: 1px solid green; padding: 10px; margin-top:80px;">
     <div style="flex: 1;">
@@ -37,9 +48,13 @@
             <button style="background-color: blue; color: white; padding: 10px; border: none; cursor: pointer;">
                 <i class="fa fa-book"></i> Pinjam Buku
             </button>
-            <button style="background-color: orange; color: white; padding: 10px; border: none; cursor: pointer; margin-left: 10px;">
-                <i class="fa fa-plus"></i> Tambah ke Koleksi
-            </button>
+            <form action="<?= base_url('bookmark/add'); ?>" method="post" style="display: inline;">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="id_buku" value="<?= $buku['id_buku']; ?>">
+                <button type="submit" style="background-color: orange; color: white; padding: 10px; border: none; cursor: pointer; margin-left: 10px;">
+                    <i class="fa fa-plus"></i> Tambah ke Koleksi
+                </button>
+            </form>
         </div>
     </div>
 </div>

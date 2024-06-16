@@ -5,12 +5,11 @@
         <h2>Baru Ditambahkan</h2>
         <hr>
         <?php foreach ($newBooks as $book): ?>
-            <div class="col-md-3">
+            <div class="col-md-3 mt-3">
                 <div class="card-sl">
                     <div class="card-image">
                         <a href="<?= base_url('pengguna/bukuid/' . $book['id_buku']); ?>"><img src="<?= base_url('cover/' . $book['cover']); ?>" class="card-img-top" alt="<?= $book['judul'] ?>" style="height: 12rem; object-fit: cover;"></a>
                     </div>
-                    <a class="card-action" href="#"><i class="fa fa-bookmark"></i></a>
                     <div class="card-heading">
                         <?= $book['judul'] ?>
                     </div>
@@ -29,4 +28,7 @@
         <?php endforeach; ?>
     </div>
 </div>
+
+
+
 <?= $this->endSection(); ?>

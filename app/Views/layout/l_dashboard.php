@@ -275,19 +275,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="<?= base_url('bookmarkController/bookmarkPengetahuan'); ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Pengetahuan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="<?= base_url('bookmarkController/bookmarkNovel'); ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Novel</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="<?= base_url('bookmarkController/bookmarkLainnya'); ?>" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Lainnya</p>
                                     </a>
