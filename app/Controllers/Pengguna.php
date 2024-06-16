@@ -28,12 +28,9 @@ class Pengguna extends BaseController
 
     public function index()
     {
-        $bookmarkModel = new BookmarkModel();
-        $totalBookmarks = $bookmarkModel->getTotalBookmarks();
-
+       
         $data = [
             'title'=>'Dashboard',
-            'totalBookmarks' => $totalBookmarks,
             // Data lain yang diperlukan
         ];
 
@@ -188,6 +185,30 @@ class Pengguna extends BaseController
             'buku' => $buku, // Mengirimkan sebagai objek tunggal
         ];
         return view('home/detail_buku', $data);
+    }
+
+    public function detail_buku($id_buku)
+    {
+        $buku = $this->bukuModel->find($id_buku);
+    
+        if (!$buku) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Buku dengan ID {$id_buku} tidak ditemukan.");
+        }
+    
+        $kategori = $this->detailKategori->getKategoriByBukuId($id_buku);
+    
+        if (!empty($kategori)) {
+            $kategoriValue = array_column($kategori, 'nama_kategori');
+            $buku['kategori'] = implode(',', $kategoriValue);
+        } else {
+            $buku['kategori'] = 'tidak ada kategori';
+        }
+    
+        $data = [
+            'title' => "Detail Buku {$buku['judul']}",
+            'buku' => $buku, // Mengirimkan sebagai objek tunggal
+        ];
+        return view('dashboard/pengguna/detail_buku', $data);
     }
   
 }

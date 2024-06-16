@@ -90,7 +90,7 @@
                     <div class="col-md-2 mt-3">
                         <div class="card-sl">
                             <div class="card-image">
-                                <a href="<?= base_url('pengguna/bukuid/' . $book['id_buku']); ?>"><img src="<?= base_url('cover/' . $book['cover']); ?>" class="card-img-top" alt="<?= $book['judul'] ?>" style="height: 12rem; object-fit: cover;"></a>
+                                <a href="<?= base_url('pengguna/detail_buku/' . $book['id_buku']); ?>"><img src="<?= base_url('cover/' . $book['cover']); ?>" class="card-img-top" alt="<?= $book['judul'] ?>" style="height: 12rem; object-fit: cover;"></a>
                             </div>
                             <div class="card-heading text-center">
                                 <?= $book['judul'] ?>
