@@ -102,12 +102,16 @@ class Accounts extends BaseController
         return redirect()->to('accounts');
     }
 
-public function logout()
-{
-    session()->remove('log');
-    session()->remove('username');
-    session()->remove('role');
-    session()->setFlashdata('pesan2', 'Anda Telah Logout');
-    return redirect()->to('accounts');
-}
+    public function logout()
+    {
+        session()->remove('log');
+        session()->remove('username');
+        session()->remove('role');
+        session()->setFlashdata('pesan2', 'Anda Telah Logout');
+        return redirect()->to('accounts');
+    }
+
+
+
+
 }
