@@ -311,10 +311,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('/pengguna/layanan'); ?>" class="nav-link">
                                 <i class="nav-icon fas fa-concierge-bell"></i>
                                 <p>
-                                    Layanan
+                                    Contact
                                 </p>
                             </a>
                         </li>

@@ -56,5 +56,10 @@ class BookmarkModel extends Model
                     ->where('id_users', $user_id)
                     ->delete();
     }
+
+    public function getTotalBookmarks()
+    {
+        return $this->countAllResults();
+    }
 }
 

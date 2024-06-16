@@ -65,4 +65,10 @@ class BukuModel extends Model
             ->getResultArray();
     }
 
+
+    public function getTotalBuku()
+    {
+        return $this->countAllResults();
+    }
+
 }

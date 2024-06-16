@@ -31,10 +31,17 @@ class Pustakawan extends BaseController
 
     public function index()
     {
-        $data =[
-            'title'=>'Dashboard',
+        $bukuModel = new BukuModel();
+        $totalBuku = $bukuModel->getTotalBuku();
+        $totalPengguna = $this->userModel->getTotalPengguna();
+
+        $data = [
+
+            'title' => 'Dashboard',
+            'totalBuku' => $totalBuku,
+            'totalPengguna' => $totalPengguna,
         ];
-        
+
         return view('dashboard/index', $data);
     }
     

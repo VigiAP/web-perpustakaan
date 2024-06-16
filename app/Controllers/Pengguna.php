@@ -28,11 +28,25 @@ class Pengguna extends BaseController
 
     public function index()
     {
-        $data =[
+        $bookmarkModel = new BookmarkModel();
+        $totalBookmarks = $bookmarkModel->getTotalBookmarks();
+
+        $data = [
             'title'=>'Dashboard',
+            'totalBookmarks' => $totalBookmarks,
+            // Data lain yang diperlukan
         ];
-        
+
         return view('dashboard/index', $data);
+    }
+
+    public function layanan()
+    {
+        $data = [
+            'title' => 'Layanan'
+        ];
+
+        return view('dashboard/pengguna/layanan', $data);
     }
 
 

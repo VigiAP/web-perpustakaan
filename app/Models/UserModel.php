@@ -52,4 +52,9 @@ class UserModel extends Model
     {
         return $this->find($id_users);
     }
+
+    public function getTotalPengguna()
+    {
+        return $this->where('role', 'pengguna')->countAllResults();
+    }
 }

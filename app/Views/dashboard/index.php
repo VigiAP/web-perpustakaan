@@ -82,13 +82,14 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>10</h3>
+                        <h3><?= $totalBuku ?></h3>
                         <p>Buku</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-book"></i>
                     </div>
-                    <a href="<?= base_url('dashboard/pustakawan/kelola_buku'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/kelola_buku'); ?>" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -96,13 +97,14 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>15</h3>
-                        <p>Anggota</p>
+                        <h3><?= $totalPengguna ?></h3>
+                        <p>Pengguna</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="<?= base_url('dashboard/pustakawan/daftar_anggota'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/daftar_anggota'); ?>" class="small-box-footer">More info
+                        <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -116,7 +118,8 @@
                     <div class="icon">
                         <i class="ion ion-loop"></i>
                     </div>
-                    <a href="<?= base_url('dashboard/pustakawan/sirkulasi'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/sirkulasi'); ?>" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -130,7 +133,8 @@
                     <div class="icon">
                         <i class="ion ion-document"></i>
                     </div>
-                    <a href="<?= base_url('dashboard/pustakawan/laporan'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?= base_url('dashboard/pustakawan/laporan'); ?>" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -139,5 +143,50 @@
     </div>
     <?php endif; ?>
 </section>
+
+<?php if (session()->get('role') == 'pengguna'): ?>
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3><?= $totalBookmarks ?></h3>
+                <p>Buku yang dibookmark</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-book"></i>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+            <div class="inner">
+                <h3></h3>
+                <p>Buku yang Dipinjam</p>
+            </div>
+            <div class="icon">
+                <i class=""></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+            <div class="inner">
+                <h3></h3>
+                <p>Buku yang Dikembalikan</p>
+            </div>
+            <div class="icon">
+                <i class=""></i>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+<!-- /.row -->
+<?php endif; ?>
+
 
 <?= $this->endSection(); ?>
