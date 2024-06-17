@@ -122,3 +122,4 @@ nb-configuration.xml
 
 /results/
 /phpunit*.xml
+.idx/
