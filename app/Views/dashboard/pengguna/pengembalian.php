@@ -46,8 +46,8 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $a->id_buku; ?></td>
                                     <td><?= $a->judul; ?></td>
-                                    <td><?= $a->updated_at; ?></td>
-                                    <td><?= $a->denda; ?></td>
+                                    <td><?= $a->updated_at == null ? "Belum Dikembalikan" : $a->updated_at; ?></td>
+                                    <td><?= $a->denda == null ? "Rp. 0" : "Rp. " . $a->denda; ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
