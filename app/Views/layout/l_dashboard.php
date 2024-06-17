@@ -295,7 +295,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('/pengguna/peminjaman') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Peminjaman
@@ -303,7 +303,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('/pengguna/pengembalian') ?>" class="nav-link">
                                 <i class="nav-icon fas fa-undo"></i>
                                 <p>
                                     Pengembalian
@@ -336,33 +336,23 @@
                         </li>
                         <?php endif; ?>
 
-
-
                     </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
+                </nav><!-- /.sidebar-menu -->
+            </div><!-- /.sidebar -->
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
 
-
             <?= $this->renderSection('konten'); ?>
 
-        </div>
-        <!-- /.content-wrapper -->
-
+        </div><!-- /.content-wrapper -->
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-    </div>
-
-    <!-- ./wrapper -->
+        </aside><!-- /.control-sidebar -->
+    </div><!-- ./wrapper -->
 
 
     <!-- jQuery -->

@@ -7,6 +7,8 @@ use App\Models\BukuModel;
 use App\Models\UserModel;
 use App\Models\DetailKategori;
 use App\Models\KategoriModel;
+use App\Models\DetailPeminjaman;
+use App\Models\PeminjamanModel;
 use PHPUnit\Framework\EmptyStringException;
 
 class Pengguna extends BaseController
@@ -16,6 +18,8 @@ class Pengguna extends BaseController
     protected $userModel;
     protected $detailKategori;
     protected $kategoriModel;
+    protected $detailPeminjaman;
+    protected $peminjamanModel;
 
     public function __construct()
     {
@@ -24,11 +28,13 @@ class Pengguna extends BaseController
         $this->userModel = new UserModel();
         $this->detailKategori = new DetailKategori();
         $this->kategoriModel = new KategoriModel();
+        $this->detailPeminjaman = new DetailPeminjaman();
+        $this->peminjamanModel = new PeminjamanModel();
     }
 
     public function index()
     {
-       
+    
         $data = [
             'title'=>'Dashboard',
             // Data lain yang diperlukan
@@ -45,17 +51,6 @@ class Pengguna extends BaseController
 
         return view('dashboard/pengguna/layanan', $data);
     }
-
-
-
-
-
-
-
-
-
-
-
 
     // bagian home
 
@@ -101,7 +96,6 @@ class Pengguna extends BaseController
         ];
         return view('home/list_buku', $data);
     }
-
 
     public function list_kategori()
     {
@@ -161,8 +155,6 @@ class Pengguna extends BaseController
         }
     }
 
-
-
     public function bukuid($id_buku)
     {
         $buku = $this->bukuModel->find($id_buku);
@@ -210,5 +202,32 @@ class Pengguna extends BaseController
         ];
         return view('dashboard/pengguna/detail_buku', $data);
     }
-  
+
+    // dashboard
+
+    public function peminjaman()
+    {
+        $userId = session()->get('id_users');
+        $listPeminjaman = $this->peminjamanModel->laporanPeminjaman();
+
+        $data = [
+            'title' => 'Peminjaman Buku',
+            'lists' => $listPeminjaman
+        ];
+
+        return view('dashboard/pengguna/peminjaman', $data);
+    }
+
+    public function pengembalian()
+    {
+        $userId = session()->get('id_users');
+        $listPeminjaman = $this->peminjamanModel->laporanPeminjaman();
+
+        $data = [
+            'title' => 'Pengembalian Buku',
+            'lists' => $listPeminjaman
+        ];
+
+        return view('dashboard/pengguna/pengembalian', $data);
+    }
 }
