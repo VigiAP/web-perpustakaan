@@ -49,7 +49,7 @@
                                     <td><?= $s->judul; ?></td>
                                     <td><?= $s->peminjam; ?></td>
                                     <td><?= $s->created_at; ?></td>
-                                    <td><?= $s->updated_at; ?></td>
+                                    <td><?= $s->tanggal_pengembalian; ?></td>
                                     <td><?= $s->denda; ?></td> 
                                 </tr>
                                 <?php endforeach; ?>

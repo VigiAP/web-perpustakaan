@@ -112,7 +112,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>5</h3>
+                        <h3><?= $totalSirkulasi ?></h3>
                         <p>Sirkulasi</p>
                     </div>
                     <div class="icon">
@@ -127,7 +127,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>4</h3>
+                        <h3><?= $totalLaporan ?></h3>
                         <p>Laporan</p>
                     </div>
                     <div class="icon">
@@ -152,26 +152,15 @@
         <!-- small box -->
         <div class="small-box bg-primary">
             <div class="inner">
-                <h3></h3>
+                <h3><?= $totalBukuDipinjam ?></h3>
                 <p>Buku yang Dipinjam</p>
             </div>
             <div class="icon">
-                <i class=""></i>
+                <i class="ion ion-book"></i>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-primary">
-            <div class="inner">
-                <h3></h3>
-                <p>Buku yang Dikembalikan</p>
-            </div>
-            <div class="icon">
-                <i class=""></i>
-            </div>
-        </div>
-    </div>
+   
     <!-- ./col -->
 </div>
 <!-- /.row -->

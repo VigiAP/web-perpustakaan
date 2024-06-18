@@ -34,12 +34,15 @@ class Pengguna extends BaseController
 
     public function index()
     {
-    
+        // Hitung total buku yang dipinjam
+        $totalBukuDipinjam = $this->detailPeminjaman->countAllResults();
+ 
         $data = [
-            'title'=>'Dashboard',
+            'title' => 'Dashboard',
+            'totalBukuDipinjam' => $totalBukuDipinjam,
             // Data lain yang diperlukan
         ];
-
+ 
         return view('dashboard/index', $data);
     }
 
@@ -229,5 +232,42 @@ class Pengguna extends BaseController
         ];
 
         return view('dashboard/pengguna/pengembalian', $data);
+    }
+
+    public function pinjam_buku()
+    {
+        $id_buku = $this->request->getPost('id_buku');
+        $id_users = session()->get('id_users');
+
+        if (!$id_users) {
+            return redirect()->to('login')->with('error', 'Anda harus login terlebih dahulu.');
+        }
+
+        // Cek apakah pengguna sudah meminjam buku ini
+        $existingPeminjaman = $this->detailPeminjaman->where('id_buku', $id_buku)->where('id_users', $id_users)->first();
+        if ($existingPeminjaman) {
+            return redirect()->to('pengguna/home')->with('error', 'Anda sudah meminjam buku ini.');
+        }
+
+        // Tambahkan entri ke tabel peminjaman
+        $dataPeminjaman = [
+            'created_at' => date('Y-m-d H:i:s'),
+            'jatuh_tempo' => date('Y-m-d', strtotime('+7 days')), // Misalnya 7 hari dari sekarang
+            'denda' => 5000 // Denda sebesar Rp 5000
+        ];
+
+        $this->peminjamanModel->insert($dataPeminjaman);
+        $id_peminjaman = $this->peminjamanModel->insertID();
+
+        // Tambahkan entri ke tabel detail_peminjaman
+        $dataDetailPeminjaman = [
+            'id_buku' => $id_buku,
+            'id_peminjaman' => $id_peminjaman,
+            'id_users' => $id_users
+        ];
+
+        $this->detailPeminjaman->insert($dataDetailPeminjaman);
+
+        return redirect()->to('pengguna/peminjaman')->with('success', 'Buku berhasil dipinjam.');
     }
 }

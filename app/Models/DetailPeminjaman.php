@@ -16,3 +16,4 @@ class DetailPeminjaman extends Model
     }
 
 }
+

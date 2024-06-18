@@ -31,15 +31,17 @@ class Pustakawan extends BaseController
 
     public function index()
     {
-        $bukuModel = new BukuModel();
-        $totalBuku = $bukuModel->getTotalBuku();
+        $totalBuku = $this->bukuModel->getTotalBuku();
         $totalPengguna = $this->userModel->getTotalPengguna();
+        $totalSirkulasi = $this->peminjamanModel->countAllResults();
+        $totalLaporan = $this->peminjamanModel->countAllResults(); // Asumsikan laporan adalah jumlah peminjaman
 
         $data = [
-
             'title' => 'Dashboard',
             'totalBuku' => $totalBuku,
             'totalPengguna' => $totalPengguna,
+            'totalSirkulasi' => $totalSirkulasi,
+            'totalLaporan' => $totalLaporan,
         ];
 
         return view('dashboard/index', $data);
@@ -332,6 +334,11 @@ class Pustakawan extends BaseController
     {
         $result = $this->peminjamanModel->sirkulasiPeminjaman();
 
+        // Calculate return date (one week after borrowing date)
+        foreach ($result as $s) {
+            $s->tanggal_pengembalian = date('Y-m-d', strtotime($s->created_at . ' +7 days'));
+        }
+
         $data = [
             'title' => 'Sirkulasi Buku',
             'sirkulasi' => $result
@@ -358,4 +365,6 @@ class Pustakawan extends BaseController
     }
 
     // laporan end
+
+
 }

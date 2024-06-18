@@ -50,9 +50,12 @@
                                     <td><?= $book->judul; ?></td>
                                     <td><?= $book->peminjam; ?></td>
                                     <td><?= $book->created_at; ?></td>
+
                                     <td><?= $book->jatuh_tempo; ?></td>
-                                    <td><?= $book->updated_at; ?></td>
-                                    <td><?= $book->denda; ?></td> 
+
+                                    <td><?= date('Y-m-d', strtotime($book->created_at . ' +7 days')); ?></td>
+
+                                    <td><?= $book->denda; ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>

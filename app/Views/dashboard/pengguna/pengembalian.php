@@ -2,10 +2,6 @@
 
 <?php $this->section('konten'); ?>
 
-<?php $this->extend('layout/l_dashboard'); ?>
-
-<?php $this->section('konten'); ?>
-
 <section class="content">
     <?php if (session()->get('role') == 'pengguna'): ?>
     <div class="content-header">
@@ -46,7 +42,15 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $a->id_buku; ?></td>
                                     <td><?= $a->judul; ?></td>
-                                    <td><?= $a->updated_at == null ? "Belum Dikembalikan" : $a->updated_at; ?></td>
+                                    <td>
+                                        <?php if ($a->updated_at == null): ?>
+                                            <!-- Tanggal pengembalian kosong jika belum dikembalikan -->
+                                            <?= ""; ?>
+                                        <?php else: ?>
+                                            <!-- Tanggal pengembalian seminggu setelah tanggal peminjaman -->
+                                            <?= date('Y-m-d', strtotime($a->created_at . ' +7 days')); ?>
+                                        <?php endif; ?>
+                                    </td>
                                     <td><?= $a->denda == null ? "Rp. 0" : "Rp. " . $a->denda; ?></td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -64,7 +68,5 @@
 
     <?php endif; ?>
 </section>
-
-<?php $this->endSection(); ?>
 
 <?php $this->endSection(); ?>

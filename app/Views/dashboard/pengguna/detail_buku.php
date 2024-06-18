@@ -2,15 +2,15 @@
 
 <?php $this->section('konten'); ?>
 <?php if(session()->getFlashdata('pesan')): ?>
-        <div class="alert alert-danger text-center" role="alert">
-            <?= session()->getFlashdata('pesan') ?>
-        </div>
-    <?php endif; ?>
+<div class="alert alert-danger text-center" role="alert">
+    <?= session()->getFlashdata('pesan') ?>
+</div>
+<?php endif; ?>
 <?php if(session()->getFlashdata('pesan2')): ?>
-        <div class="alert alert-success text-center" role="alert" style="margin-top: 80px;">
-            <?= session()->getFlashdata('pesan2') ?>
-        </div>
-    <?php endif; ?>
+<div class="alert alert-success text-center" role="alert" style="margin-top: 80px;">
+    <?= session()->getFlashdata('pesan2') ?>
+</div>
+<?php endif; ?>
 
 
 <div style="display: flex; border: 1px solid green; padding: 10px; margin-top:80px;">
@@ -45,9 +45,13 @@
             </tr>
         </table>
         <div style="margin-top: 20px;">
-            <button style="background-color: blue; color: white; padding: 10px; border: none; cursor: pointer;">
-                <i class="fa fa-book"></i> Pinjam Buku
-            </button>
+        <form action="<?= base_url('pengguna/pinjam_buku') ?>" method="post">
+                <input type="hidden" name="id_buku" value="<?= $buku['id_buku'] ?>">
+                <button style="background-color: blue; color: white; padding: 10px; border: none; cursor: pointer;">
+                    <i class="fa fa-book"></i> Pinjam Buku
+                </button>
+            </form>
+
             <form action="<?= base_url('bookmark/add'); ?>" method="post" style="display: inline;">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_buku" value="<?= $buku['id_buku']; ?>">

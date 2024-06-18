@@ -22,7 +22,10 @@
                     <div class="card-text">
                         <?= $book['tahun_terbit'] ?>
                     </div>
-                    <a href="#" class="card-button">Pinjam Buku</a>
+                    <form action="<?= base_url('pengguna/pinjam_buku') ?>" method="post">
+                        <input type="hidden" name="id_buku" value="<?= $book['id_buku'] ?>">
+                        <button type="submit" class="card-button">Pinjam Buku</button>
+                    </form>
                 </div>
             </div>
         <?php endforeach; ?>

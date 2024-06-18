@@ -25,6 +25,7 @@ $routes->post('bookmark/hapusBookmark/(:num)', 'BookmarkController::hapusBookmar
 $routes->get('bookmark/pengetahuan', 'BookmarkController::bookmarkPengetahuan');
 $routes->get('bookmark/novel', 'BookmarkController::bookmarkNovel');
 $routes->get('bookmark/lainnya', 'BookmarkController::bookmarkLainnya');
+$routes->post('pengguna/pinjam_buku', 'Pengguna::pinjam_buku');
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';

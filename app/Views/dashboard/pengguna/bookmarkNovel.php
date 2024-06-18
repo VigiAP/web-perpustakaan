@@ -111,7 +111,7 @@
                                 <?= $book['judul'] ?>
                             </div>
                             <div class="card-buttons">
-                                <a href="#" class="card-button">Tampilkan Detail</a>
+                                <a href="<?= base_url('pengguna/detail_buku/' . $book['id_buku']); ?>" class="card-button">Tampilkan Detail</a>
                                 <form action="<?= base_url('bookmark/hapusBookmark/' . $book['id_buku']); ?>" method="post" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus bookmark ini?');">
                                     <button type="submit" class="card-button btn-danger">Hapus Bookmark</button>
                                 </form>
